@@ -1,6 +1,6 @@
 # Content Delivery Network (CDN)
 
-### Machines
+#### Machines
     * North-America (DNS):  52.177.9.49
     * Europe (chache 1):    40.127.181.75
     * Asia (chache 2):      -------------
@@ -9,14 +9,14 @@ All machines running Ubuntu Server 18.04 LTS
 
 ### North-America
 
-#### System configurations
+##### System configurations
 * `sudo apt update && sudo apt upgrade -y`
 * `sudo apt install bind9 bind9utils -y`
 * `sudo ufw allow Bind9`
 * `sudo ufw allow 22`
 * `sudo ufw enable`
    
-#### DNS configuration files
+##### DNS configuration files
 * <i>Named</i>
     * Edit:
         * [/etc/bind/named.conf](backup/named.conf)
@@ -44,7 +44,7 @@ All machines running Ubuntu Server 18.04 LTS
 ### Asia
 
 
-### Utils
+#### Utils
 * Set DNS servers <br>
     * Example for US machine:
         * Keep a copy of the [file](backup/set%20servers.yaml) in the home directory

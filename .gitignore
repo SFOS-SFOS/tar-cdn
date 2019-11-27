@@ -1,8 +1,5 @@
 .idea/
-future work/master/
-future work/reverse/
+future\ work
 IPs.txt
 links.txt
-named.conf.local
-named.conf.options
-"future work"/
+backup/comandos.sh

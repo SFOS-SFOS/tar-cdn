@@ -1,0 +1,56 @@
+// 	/etc/bind/named.conf.local
+
+//
+// Do any local configuration here
+//
+
+// Consider adding the 1918 zones here, if they are not used in your
+// organization
+//include "/etc/bind/zones.rfc1918";
+
+acl "europe" {
+        194.210.0.0/16;
+        40.127.181.75;
+//      10.0.2.0/24;
+        188.250.140.127;
+};
+
+acl "north-america" {
+        52.177.9.49;
+        172.106.104.152;
+};
+
+
+view "europe" {
+        match-clients { europe; };
+        zone "demo-tar.com" IN {
+                file "master/demo-tar.com/europe/zone.conf";
+                type master;
+        };
+
+//        zone "0.0.10.in-addr.arpa" IN {
+//              type master;
+//               file "reverse/demo-tar.com/europe/zone.conf";
+//        };
+
+};
+
+view "north-america" {
+        match-clients { north-america; };
+        zone "demo-tar.com" IN {
+                file "master/demo-tar.com/north-america/zone.conf";
+                type master;
+        };
+
+//        zone "0.0.10.in-addr.arpa" IN {
+//               type master;
+//               file "reverse/zone-tar.com/north-america/zone.conf";
+//        };
+};
+
+
+
+
+
+
+
