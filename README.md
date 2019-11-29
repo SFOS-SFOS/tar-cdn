@@ -3,7 +3,7 @@
 #### Machines
     * North-America (DNS):  52.177.9.49
     * Europe (chache 1):    40.127.181.75
-    * Asia (chache 2):      -------------
+    * Asia (chache 2):      137.116.137.120
 
 All machines running Ubuntu Server 18.04 LTS 
 
@@ -34,17 +34,31 @@ All machines running Ubuntu Server 18.04 LTS
         
     * Check with:
         * `named-checkzone demo-tar.com {FILE PATH}`
-<br>
         
 * Restart service: `sudo systemctl restart bind9 && sleep 2 && sudo systemctl status bind9`                
+
 <br>
 
-### Europe
+##### HTTP server
+* Run [HTTP server](HTTP%20server/server.py): `cd server && sudo python2 server.py`
 
-### Asia
+<br>
+
+### Europe & Asia
+##### System configurations
+* `sudo apt update && sudo apt upgrade -y`
+* `sudo ufw allow 80`
+* `sudo ufw allow 8080`
+* `sudo ufw allow 22`
+* `sudo ufw enable`
+
+##### Cache server
+* Run [cache server](Cache%20Server/server.py): `python3 cache/server.py`
 
 
-#### Utils
+<br>
+
+#### (Extra) Useful commands
 * Set DNS servers <br>
     * Example for US machine:
         * Keep a copy of the [file](backup/set%20servers.yaml) in the home directory

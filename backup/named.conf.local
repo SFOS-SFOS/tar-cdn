@@ -20,6 +20,10 @@ acl "north-america" {
         172.106.104.152;
 };
 
+acl "asia" {
+	137.116.137.120;
+};
+
 
 view "europe" {
         match-clients { europe; };
@@ -29,10 +33,9 @@ view "europe" {
         };
 
 //        zone "0.0.10.in-addr.arpa" IN {
-//              type master;
-//               file "reverse/demo-tar.com/europe/zone.conf";
+//                type master;
+//                file "reverse/demo-tar.com/europe/zone.conf";
 //        };
-
 };
 
 view "north-america" {
@@ -48,9 +51,10 @@ view "north-america" {
 //        };
 };
 
-
-
-
-
-
-
+view "asia" {
+        match-clients { asia; };
+        zone "demo-tar.com" IN {
+                file "master/demo-tar.com/asia/zone.conf";
+                type master;
+        };
+};
