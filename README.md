@@ -31,13 +31,12 @@ All machines running Ubuntu Server 18.04 LTS
     * Set  zone configuration files:     
         * [/var/cache/bind/master/demo-tar.com/europe/zone.conf](backup/europe-zone.conf)
         * [/var/cache/bind/master/demo-tar.com/north-america/zone.conf](backup/north-america-zone.conf)
+        * [/var/cache/bind/master/demo-tar.com/asia/zone.conf](backup/asia-zone.conf)
         
     * Check with:
         * `named-checkzone demo-tar.com {FILE PATH}`
         
-* Restart service: `sudo systemctl restart bind9 && sleep 2 && sudo systemctl status bind9`                
-
-<br>
+* Restart service: `sudo systemctl restart bind9 && sleep 2 && sudo systemctl status bind9`
 
 ##### HTTP server
 * Run [HTTP server](HTTP%20server/server.py): `cd server && sudo python2 server.py`
