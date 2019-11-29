@@ -1,13 +1,13 @@
 # Content Delivery Network (CDN)
 
 #### Machines
-    * North-America (DNS):  52.177.9.49
+    * North America (DNS):  52.177.9.49
     * Europe (chache 1):    40.127.181.75
     * Asia (chache 2):      13.67.71.115
 
 All machines running Ubuntu Server 18.04 LTS 
 
-### North-America
+### North America
 
 ##### System configurations
 * `sudo apt update && sudo apt upgrade -y`
@@ -39,6 +39,7 @@ All machines running Ubuntu Server 18.04 LTS
         
 * Restart service: `sudo systemctl restart bind9 && sleep 2 && sudo systemctl status bind9`
 
+
 ##### HTTP server
 * Run HTTP server: `cd /home/tar/server/ && python3 -m http.server --bind 0.0.0.0 80`
 
@@ -62,7 +63,25 @@ All machines running Ubuntu Server 18.04 LTS
 ##### Crontab
 * At root crontab add `@reboot ( python3 /home/tar/cache/server.py & )` for running at startup
 
+<br>
 
+#### Socks configuration
+* Add DNS machine IP to local interface list of DNS servers (in this case the North American machine)
+* Uncomment and edit the following settings in [/etc/ssh/sshd_config](backup/sshd_config) at remote machine:
+    * AllowTcpForwarding yes
+    * TCPKeepAlive yes
+    * PermitTunnel yes   
+* Restart ssh: `sudo systemctl restart sshd`
+
+* Example of tunnel:
+    * Tunnel to <i>North-America</i> machine: `ssh 52.177.9.49 -l tar -D 19000 -4fN`
+    * Firefox configuration:
+        * Go to <about:preferences#general> and scroll down to <b>Network Settings</b>
+        * Set the configuration like the following image:
+          <p align="center">
+            <img src="images/firefox-configs.png">
+          </p>
+        * Open www.demo-tar.com
 <br>
 
 #### (Extra) Useful commands
