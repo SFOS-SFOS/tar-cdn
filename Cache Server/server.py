@@ -8,7 +8,7 @@ import os
 cacheDir = '/tmp/cache/'
 originServer = '52.177.9.49'
 originPort = 80
-PORT = 8080
+PORT = 80
 MAX_TIME_ON_CACHE = 60
 
 if not os.path.isdir(cacheDir):

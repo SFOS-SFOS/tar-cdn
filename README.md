@@ -3,7 +3,7 @@
 #### Machines
     * North-America (DNS):  52.177.9.49
     * Europe (chache 1):    40.127.181.75
-    * Asia (chache 2):      137.116.137.120
+    * Asia (chache 2):      13.67.71.115
 
 All machines running Ubuntu Server 18.04 LTS 
 
@@ -14,6 +14,7 @@ All machines running Ubuntu Server 18.04 LTS
 * `sudo apt install bind9 bind9utils -y`
 * `sudo ufw allow Bind9`
 * `sudo ufw allow 22`
+* `sudo ufw allow 80`
 * `sudo ufw enable`
    
 ##### DNS configuration files
@@ -39,7 +40,10 @@ All machines running Ubuntu Server 18.04 LTS
 * Restart service: `sudo systemctl restart bind9 && sleep 2 && sudo systemctl status bind9`
 
 ##### HTTP server
-* Run [HTTP server](HTTP%20server/server.py): `cd server && sudo python2 server.py`
+* Run HTTP server: `cd /home/tar/server/ && python3 -m http.server --bind 0.0.0.0 80`
+
+##### Crontab
+* At root crontab add `@reboot ( cd /home/tar/server/ && python3 -m http.server --bind 0.0.0.0 80 & )` for running at startup
 
 <br>
 
@@ -47,12 +51,16 @@ All machines running Ubuntu Server 18.04 LTS
 ##### System configurations
 * `sudo apt update && sudo apt upgrade -y`
 * `sudo ufw allow 80`
-* `sudo ufw allow 8080`
 * `sudo ufw allow 22`
 * `sudo ufw enable`
 
 ##### Cache server
+* Install [requirements](Cache%20Server/requirements.txt): `pip3 install -U -r requirements.txt`
 * Run [cache server](Cache%20Server/server.py): `python3 cache/server.py`
+
+
+##### Crontab
+* At root crontab add `@reboot ( python3 /home/tar/cache/server.py & )` for running at startup
 
 
 <br>
