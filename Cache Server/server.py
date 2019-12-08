@@ -17,7 +17,7 @@ if not os.path.isdir(cacheDir):
 cachedItems = {}
 
 
-def envelhecedor_fn():
+def aging_fn():
     while True:
         list_to_remove = []
         for item in cachedItems:
@@ -50,8 +50,6 @@ def receiver(path):
     if not path2:
         path2 = "index.html"
 
-    # print("PATH: ", 'http://' + originServer + ":" + str(originPort) + "/" + path)
-
     if path2 in cachedItems:
         print("sending cached file " + path)
         return send_file(cacheDir + path2)
@@ -66,6 +64,6 @@ def receiver(path):
 
 
 if __name__ == '__main__':
-    envelhecedor = threading.Thread(target=envelhecedor_fn, args=(), daemon=True)
-    envelhecedor.start()
+    aging = threading.Thread(target=aging_fn, args=(), daemon=True)
+    aging.start()
     app.run(host='0.0.0.0', port=PORT)
