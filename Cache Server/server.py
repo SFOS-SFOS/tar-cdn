@@ -1,3 +1,10 @@
+##################################################
+
+## Author: Luís Magalhães
+
+##################################################
+
+
 from flask import Flask, send_file
 import threading
 import time as time2
@@ -67,3 +74,4 @@ if __name__ == '__main__':
     aging = threading.Thread(target=aging_fn, args=(), daemon=True)
     aging.start()
     app.run(host='0.0.0.0', port=PORT)
+
