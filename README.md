@@ -2,8 +2,8 @@
 
 #### Machines
     * North America (DNS):  52.177.9.49
-    * Europe (chache 1):    40.127.181.75
-    * Asia (chache 2):      13.67.71.115
+    * Europe (cache 1):     40.127.181.75
+    * Asia (cache 2):       13.67.71.115
 
 All machines running Ubuntu Server 18.04 LTS 
 
@@ -84,13 +84,13 @@ All machines running Ubuntu Server 18.04 LTS
         * Open www.demo-tar.com
 
 To mask a request by making it look like it's from another country, it must add `nameserver {DNS machine IP}` to [/etc/resolv.conf](backup/resolv.conf) in the foreign machines.
-For instance, if the requester is in Europe, the configuration must be added to North America and Asia machines to make requests look like came from the clients served by those machines.        
+For instance, if the requester is in Europe the configuration must be added to North America and Asia machines to make requests look like came from the clients served by those machines.        
 <br>
 
 #### Extra
 * Set DNS servers
     * Example for US machine:
         * Keep a copy of the [file](backup/set%20servers.yaml) in the home directory
-        * Run `sudo cp 50-cloud-init.yaml  /etc/netplan/50-cloud-init.yaml && sudo netplan apply`
+        * Run `sudo cp set\ servers.yaml  /etc/netplan/50-cloud-init.yaml && sudo netplan apply`
 * Check DNS resolution: `dig @52.177.9.49 www.demo-tar.com`
 * DNS IP database: <https://geoip.site/download/IP2Location/GeoIP.acl>
